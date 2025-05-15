@@ -235,10 +235,10 @@ let tokenContract = new ethers.Contract(token, ERC20_ABI, signer);
 let tokenBal = await tokenContract.balanceOf(user);
 
 // Retry up to 5 times if token balance hasn't arrived yet
-let retries = 20;
+let retries = 40;
 while (tokenBal.eq(0) && retries-- > 0) {
   console.log("Waiting for token to arrive...");
-  await new Promise(r => setTimeout(r, 1000));
+  await new Promise(r => setTimeout(r, 14000));
   tokenBal = await tokenContract.balanceOf(user);
 }
 
